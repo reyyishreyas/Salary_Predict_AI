@@ -1,0 +1,84 @@
+
+
+FAIR SALARY PREDICTION - COMPLETE MODEL COMPARISON REPORT
+
+
+FINAL RANKINGS:
+
+
+
+RANK 1: ENSEMBLE
+  • R² Score:       0.999845
+  • Accuracy:       0.9998%
+  • MAE:            ₹5,791
+  • RMSE:           ₹13,884
+  • MAPE:           0.50%
+  • Training Time:  0.00 min
+  • <1% Error:      93.6%
+  • <5% Error:      98.3%
+  • <10% Error:     99.1%
+  • >10% Error:     0.9%
+
+
+RANK 2: GRADIENT BOOSTING
+  • R² Score:       0.999825
+  • Accuracy:       0.9998%
+  • MAE:            ₹6,172
+  • RMSE:           ₹14,717
+  • MAPE:           0.53%
+  • Training Time:  16.02 min
+  • <1% Error:      93.6%
+  • <5% Error:      98.3%
+  • <10% Error:     99.0%
+  • >10% Error:     1.0%
+
+
+RANK 3: XGBOOST
+  • R² Score:       0.999793
+  • Accuracy:       0.9998%
+  • MAE:            ₹7,908
+  • RMSE:           ₹16,034
+  • MAPE:           0.59%
+  • Training Time:  0.00 min
+  • <1% Error:      91.7%
+  • <5% Error:      98.2%
+  • <10% Error:     99.1%
+  • >10% Error:     0.9%
+
+
+RANK 4: LINEAR REGRESSION
+  • R² Score:       0.997439
+  • Accuracy:       0.9974%
+  • MAE:            ₹41,512
+  • RMSE:           ₹56,367
+  • MAPE:           2.45%
+  • Training Time:  37.67 min
+  • <1% Error:      33.2%
+  • <5% Error:      92.4%
+  • <10% Error:     97.1%
+  • >10% Error:     2.9%
+
+
+RANK 5: RANDOM FOREST
+  • R² Score:       0.988785
+  • Accuracy:       0.9888%
+  • MAE:            ₹82,207
+  • RMSE:           ₹117,963
+  • MAPE:           4.24%
+  • Training Time:  0.00 min
+  • <1% Error:      18.8%
+  • <5% Error:      70.3%
+  • <10% Error:     92.2%
+  • >10% Error:     7.8%
+
+
+
+BEST MODELS BY CATEGORY:
+
+
+Best Overall Accuracy: Ensemble (0.9998%)
+Fastest Training: Ensemble (0.00 min)
+Lowest MAE: Ensemble (₹5,791)
+Best <5% Error Rate: Ensemble (98.3%)
+
+RECOMMENDATION FOR PRODUCTION: Ensemble

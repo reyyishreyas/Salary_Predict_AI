@@ -1,0 +1,26 @@
+{
+    "model_name": "Ultimate Linear Regression (ElasticNet + Polynomial)",
+    "baseline_r2": 0.9868664278633492,
+    "baseline_accuracy": 98.68664278633491,
+    "tuned_r2": 0.9974392026576403,
+    "r2_score": 0.9974392026576403,
+    "accuracy_percentage": 99.74392026576403,
+    "mae": 41511.655021481965,
+    "rmse": 56367.15193630958,
+    "mape": 2.4464632051520905,
+    "improvement_over_baseline": 1.0572774794291084,
+    "training_time_seconds": 2260.2323257923126,
+    "training_time_minutes": 37.67053876320521,
+    "best_cv_score": 0.9972173928695558,
+    "best_params": {
+        "elasticnet__alpha": 0.1,
+        "elasticnet__l1_ratio": 0.9,
+        "poly__degree": 3
+    },
+    "original_features": 29,
+    "polynomial_features_total": 4959,
+    "selected_features": 4950,
+    "training_samples": 15573,
+    "test_samples": 3894,
+    "configurations_tested": 40
+}

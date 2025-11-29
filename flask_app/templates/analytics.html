@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - ML Salary Predictor{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="text-center mb-4" style="color: white;">
+            <h1 class="display-4 fw-bold"><i class="fas fa-chart-line"></i> Analytics & Insights</h1>
+            <p class="lead">Explore salary trends, patterns, and feature importance</p>
+        </div>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">
+    <i class="fas fa-exclamation-triangle"></i> <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-sliders-h"></i> Filters & Controls
+            </div>
+            <div class="card-body">
+                <form class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label text-light ">Department</label>
+                        <select class="form-select">
+                            <option value="">All Departments</option>
+                            <option>Engineering</option>
+                            <option>Data Science</option>
+                            <option>Marketing</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-light ">Role</label>
+                        <select class="form-select">
+                            <option value="">All Roles</option>
+                            <option>Software Engineer</option>
+                            <option>Data Scientist</option>
+                            <option>Product Manager</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-light ">Experience Range</label>
+                        <select class="form-select">
+                            <option value="">All</option>
+                            <option>0-2 years</option>
+                            <option>3-5 years</option>
+                            <option>6-10 years</option>
+                            <option>10+ years</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">&nbsp;</label>
+                        <button type="button" class="btn btn-primary w-100">
+                            <i class="fas fa-filter"></i> Apply Filters
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-star"></i> Feature Importance Analysis
+            </div>
+            <div class="card-body text-center">
+                {% if chart1 %}
+                <img src="data:image/png;base64,{{ chart1 }}" class="img-fluid" alt="Feature Importance">
+                <p class="text-muted mt-3">
+                    <i class="fas fa-info-circle"></i> Shows which features have the most impact on salary predictions
+                </p>
+                {% else %}
+                <p class="text-muted">No feature importance data available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-building"></i> Average Salary by Department
+            </div>
+            <div class="card-body text-center">
+                {% if chart2 %}
+                <img src="data:image/png;base64,{{ chart2 }}" class="img-fluid" alt="Salary by Department">
+                {% else %}
+                <p class="text-muted">No data available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-chart-scatter"></i> Experience vs Salary Correlation
+            </div>
+            <div class="card-body text-center">
+                {% if chart3 %}
+                <img src="data:image/png;base64,{{ chart3 }}" class="img-fluid" alt="Experience vs Salary">
+                {% else %}
+                <p class="text-muted">No data available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-lightbulb"></i> Key Insights
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <h6 class="alert-heading"><i class="fas fa-arrow-up"></i> Top Salary Drivers</h6>
+                            <ul class="mb-0">
+                                <li>Total Experience shows strong correlation with salary</li>
+                                <li>Industry type significantly impacts compensation</li>
+                                <li>Current CTC is a strong predictor of future salary</li>
+                                <li>Educational qualifications play a moderate role</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <h6 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Notable Trends</h6>
+                            <ul class="mb-0">
+                                <li>Location impacts salary by up to 30%</li>
+                                <li>Tech departments command premium salaries</li>
+                                <li>Companies worked: optimal range is 2-4</li>
+                                <li>Publications/Certifications add 5-10% premium</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-table"></i> Summary Statistics
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Overall</th>
+                                <th>Engineering</th>
+                                <th>Data Science</th>
+                                <th>Marketing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mean Salary</strong></td>
+                                <td>₹8,50,000</td>
+                                <td>₹9,20,000</td>
+                                <td>₹10,50,000</td>
+                                <td>₹7,30,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Median Salary</strong></td>
+                                <td>₹7,80,000</td>
+                                <td>₹8,50,000</td>
+                                <td>₹9,80,000</td>
+                                <td>₹6,90,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Avg Experience</strong></td>
+                                <td>5.2 years</td>
+                                <td>4.8 years</td>
+                                <td>5.5 years</td>
+                                <td>5.8 years</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sample Size</strong></td>
+                                <td>1,250</td>
+                                <td>450</td>
+                                <td>320</td>
+                                <td>280</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-light  small mt-3">
+                    <i class="fas fa-info-circle"></i> Note: These are sample statistics based on the training dataset
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

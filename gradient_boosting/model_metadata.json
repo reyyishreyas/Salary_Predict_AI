@@ -1,0 +1,30 @@
+{
+    "model_name": "Gradient Boosting",
+    "baseline_r2": 0.9992090360787533,
+    "baseline_accuracy": 99.92090360787533,
+    "tuned_r2": 0.9998254388252772,
+    "r2_score": 0.9998254388252772,
+    "accuracy_percentage": 99.98254388252772,
+    "mae": 6172.102444156562,
+    "rmse": 14716.763626271559,
+    "mape": 0.5306505201014838,
+    "improvement_over_baseline": 0.06164027465238586,
+    "baseline_time_seconds": 2.1891520023345947,
+    "training_time_seconds": 961.0623037815094,
+    "training_time_minutes": 16.017705063025158,
+    "best_cv_score": 0.9997408520344049,
+    "best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 7,
+        "min_samples_split": 2,
+        "n_estimators": 1000,
+        "subsample": 0.8
+    },
+    "training_samples": 15573,
+    "test_samples": 3894,
+    "features": 29,
+    "configurations_tested": 72,
+    "final_n_estimators": 1000,
+    "final_max_depth": 7,
+    "final_learning_rate": 0.05
+}

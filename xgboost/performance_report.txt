@@ -1,0 +1,56 @@
+
+================================================================================
+XGBOOST SALARY PREDICTION MODEL - PERFORMANCE REPORT
+================================================================================
+
+MODEL PERFORMANCE METRICS:
+--------------------------
+R² Score:           0.9998 (99.98%)
+Mean Absolute Error (MAE):    ₹7,908
+Root Mean Squared Error (RMSE): ₹16,034
+Mean Absolute Percentage Error: 0.59%
+
+SALARY RANGES:
+--------------
+Actual Salary Range:    ₹385,091 - ₹5,116,266
+Predicted Salary Range: ₹390,983 - ₹5,068,459
+Mean Actual Salary:     ₹2,245,458
+Mean Predicted Salary:  ₹2,245,550
+
+ERROR STATISTICS:
+-----------------
+Min Error:    ₹1
+Max Error:    ₹249,854
+Median Error: ₹4,593
+Std Dev:      ₹13,950
+
+ACCURACY BREAKDOWN:
+-------------------
+Predictions within 1% error:  3,571 (91.7%)
+Predictions within 5% error:  3,825 (98.2%)
+Predictions within 10% error: 3,860 (99.1%)
+Predictions with >10% error:  34 (0.9%)
+
+PERFORMANCE CLASSIFICATION:
+---------------------------
+ WORLD-CLASS ACCURACY (95%+)
+
+OUTLIERS (>10% ERROR):
+----------------------
+Number of outliers: 34 (0.9%)
+
+Top 5 Worst Predictions:
+      Actual_Salary  Predicted_Salary  Absolute_Error  Percentage_Error
+1596         444359         638712.80    194353.81250         43.738016
+613          601323         851176.80    249853.81250         41.550683
+73           407043         551163.10    144120.12500         35.406609
+2718         387534         500905.84    113371.84375         29.254683
+3592         505641         644624.40    138983.37500         27.486572
+
+================================================================================
+VISUALIZATIONS GENERATED:
+  1. results/01_actual_vs_predicted.png
+  2. results/02_residual_plot.png
+  3. results/03_error_distributions.png
+  4. results/04_accuracy_breakdown.png
+================================================================================

@@ -1,0 +1,13 @@
+
+⚡ QUICK REFERENCE - MODEL SELECTION GUIDE
+
+For Production → Ensemble (1.00%)
+For Speed → Ensemble (0.0 min)
+For Balance → Gradient Boosting (1.00%)
+
+All Models Tested: Ensemble, Gradient Boosting, XGBoost, Linear Regression, Random Forest
+
+Files Location: results/comparison/
+  • data/ - CSV metrics
+  • visualizations/ - PNG charts
+  • reports/ - TXT analysis

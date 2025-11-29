@@ -1,0 +1,22 @@
+{
+    "model_type": "XGBRegressor",
+    "training_samples": 15573,
+    "test_samples": 3894,
+    "features": 29,
+    "baseline_r2": 0.9997135996818542,
+    "tuned_r2": 0.999792754650116,
+    "mae": 7908.44091796875,
+    "rmse": 16034.298238463696,
+    "mape": 0.5928677119830537,
+    "cv_mean_r2": 0.9997333526611328,
+    "cv_std_r2": 2.1177039588989483e-05,
+    "best_params": {
+        "colsample_bytree": 1.0,
+        "gamma": 0,
+        "learning_rate": 0.05,
+        "max_depth": 8,
+        "min_child_weight": 3,
+        "n_estimators": 500,
+        "subsample": 1.0
+    }
+}

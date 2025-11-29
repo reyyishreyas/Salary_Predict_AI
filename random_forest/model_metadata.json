@@ -1,0 +1,13 @@
+{
+    "model_name": "Random Forest",
+    "r2_score": 0.9887845768270496,
+    "accuracy_percentage": 98.87845768270496,
+    "mae": 82207.31659527478,
+    "rmse": 117963.13854403286,
+    "mape": 4.24060047279315,
+    "training_time_seconds": 1.2576360702514648,
+    "n_estimators": 500,
+    "max_depth": null,
+    "training_samples": 15573,
+    "test_samples": 3894
+}
