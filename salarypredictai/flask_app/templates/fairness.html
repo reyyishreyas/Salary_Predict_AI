@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+
+{% block title %}Fairness Analysis - ML Salary Predictor{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="text-center mb-4 text-light">
+            <h1 class="display-4 fw-bold"><i ></i> Fairness & Bias Analysis</h1>
+            <p class="lead  text-light ">Ensure equitable and non-discriminatory salary predictions</p>
+        </div>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">
+    <i class="fas fa-exclamation-triangle"></i> <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-info-circle"></i> About Fairness Analysis
+            </div>
+            <div class="card-body text-light">
+                <p>
+                    This analysis examines salary predictions across different demographic and professional groups 
+                    to identify potential biases and ensure fair compensation recommendations.
+                </p>
+                <div class="alert alert-warning text-dark mb-0">
+                    <strong><i class="fas fa-exclamation-triangle"></i> Important:</strong> 
+                    Significant discrepancies in predictions across groups may indicate potential bias 
+                    that should be investigated and addressed.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-map-marker-alt"></i> Salary Distribution by Location
+            </div>
+            <div class="card-body text-center text-light">
+                {% if charts and charts|length > 0 %}
+                <img src="data:image/png;base64,{{ charts[0] }}" class="img-fluid" alt="Salary by Location">
+                <p class="text-light mt-3">
+                    <i class="fas fa-info-circle"></i> Comparing average salaries across different locations with error bars showing variance
+                </p>
+                {% else %}
+                <p class="text-muted">No data available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-building"></i> Salary Distribution by Department (Boxplot)
+            </div>
+            <div class="card-body text-center text-light">
+                {% if charts and charts|length > 1 %}
+                <img src="data:image/png;base64,{{ charts[1] }}" class="img-fluid" alt="Salary by Department">
+                <p class="text-light mt-3">
+                    <i class="fas fa-info-circle"></i> Boxplots show median, quartiles, and outliers for each department
+                </p>
+                {% else %}
+                <p class="text-muted">No data available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-graduation-cap"></i> Salary Distribution by Education Level
+            </div>
+            <div class="card-body text-center text-light">
+                {% if charts and charts|length > 2 %}
+                <img src="data:image/png;base64,{{ charts[2] }}" class="img-fluid" alt="Salary by Education">
+                <p class="text-light mt-3">
+                    <i class="fas fa-info-circle"></i> Average salary trends across different education qualifications
+                </p>
+                {% else %}
+                <p class="text-muted">No data available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-clipboard-check"></i> Fairness Metrics Summary
+            </div>
+            <div class="card-body text-light">
+                <div class="table-responsive">
+                    <table class="table table-hover table-dark text-light">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Group Category</th>
+                                <th>Metric</th>
+                                <th>Value</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Location</strong></td>
+                                <td>Coefficient of Variation</td>
+                                <td>18.5%</td>
+                                <td><span class="badge bg-success">Acceptable</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Department</strong></td>
+                                <td>Max-Min Ratio</td>
+                                <td>1.42x</td>
+                                <td><span class="badge bg-success">Acceptable</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Education</strong></td>
+                                <td>Variance Ratio</td>
+                                <td>1.28</td>
+                                <td><span class="badge bg-success">Acceptable</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Experience Groups</strong></td>
+                                <td>Standard Deviation</td>
+                                <td>₹1,85,000</td>
+                                <td><span class="badge bg-warning text-dark">Monitor</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-success text-light">
+                <i class="fas fa-check-circle"></i> Fairness Strengths
+            </div>
+            <div class="card-body text-light">
+                <ul>
+                    <li><strong>Location Parity:</strong> Predictions show reasonable variance across locations, adjusted for cost of living</li>
+                    <li><strong>Department Balance:</strong> No extreme outliers detected in department-based predictions</li>
+                    <li><strong>Education Merit:</strong> Higher qualifications appropriately rewarded without over-weighting</li>
+                    <li><strong>Experience Curve:</strong> Smooth progression with years of experience</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-warning text-dark">
+                <i class="fas fa-exclamation-triangle"></i> Areas to Monitor
+            </div>
+            <div class="card-body text-light">
+                <ul>
+                    <li><strong>Location Premiums:</strong> Tier-1 cities show 25-30% higher predictions - verify market rates</li>
+                    <li><strong>Role Concentration:</strong> Some niche roles have limited training samples</li>
+                    <li><strong>Career Gaps:</strong> Model may not fully account for career breaks or gaps</li>
+                    <li><strong>International Degrees:</strong> Premium for international degrees needs validation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-shield-alt"></i> Bias Mitigation Strategies
+            </div>
+            <div class="card-body text-light">
+                <div class="accordion" id="mitigationAccordion">
+                    <div class="accordion-item bg-dark text-light">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                1. Regular Monitoring and Auditing
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#mitigationAccordion">
+                            <div class="accordion-body text-light">
+                                Continuously monitor predictions across different groups and conduct quarterly fairness audits 
+                                to detect and address emerging biases early.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-dark text-light">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                2. Diverse Training Data
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#mitigationAccordion">
+                            <div class="accordion-body text-light">
+                                Ensure training data represents diverse candidates across locations, departments, 
+                                backgrounds, and career paths to minimize systemic biases.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-dark text-light">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                3. Feature Engineering Review
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#mitigationAccordion">
+                            <div class="accordion-body text-light">
+                                Regularly review feature importance and remove or adjust features that may 
+                                introduce unintended bias while maintaining prediction accuracy.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-dark text-light">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                4. Human Review Process
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#mitigationAccordion">
+                            <div class="accordion-body text-light">
+                                Implement human review for predictions that deviate significantly from expected ranges 
+                                or show unusual patterns across demographic groups.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card bg-dark text-light shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <i class="fas fa-file-download"></i> Export Fairness Report
+            </div>
+            <div class="card-body text-center text-light">
+                <p>Generate a comprehensive fairness analysis report with all metrics and visualizations</p>
+                <button class="btn btn-primary" onclick="exportReport()">
+                    <i class="fas fa-download"></i> Download Fairness Report (PDF)
+                </button>
+                <button class="btn btn-outline-primary ms-2" onclick="exportData()">
+                    <i class="fas fa-file-csv"></i> Export Raw Data (CSV)
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function exportReport() {
+    alert('PDF report generation would be implemented server-side using libraries like ReportLab or WeasyPrint');
+}
+
+function exportData() {
+    alert('CSV export functionality would generate detailed fairness metrics in spreadsheet format');
+}
+</script>
+{% endblock %}

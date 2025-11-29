@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}ML Salary Predictor{% endblock %}</title>
+
+<!-- Bootstrap & FontAwesome -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #4f46e5;
+    --secondary: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #06b6d4;
+    --bg-dark: #121212;
+    --card-dark: #1f1f1f;
+    --text-light: #e5e7eb;
+    --text-muted: #9ca3af;
+    --input-bg: #1e1e1e;
+    --hover-shadow: rgba(79, 70, 229, 0.4);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+.navbar {
+    background-color: #1a1a1a !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary) !important;
+    font-size: 1.6rem;
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary) !important;
+    transform: translateY(-2px);
+}
+
+.container-main {
+    margin-top: 3rem;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-dark);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+}
+
+.card-header {
+    background-color: #2a2a2a;
+    color: var(--text-light);
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.5rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* Buttons */
+.btn-primary, .btn-success {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--hover-shadow);
+}
+
+.btn-success {
+    background: var(--secondary);
+    border: none;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+/* Inputs */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #333;
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.4);
+    background-color: var(--input-bg);
+    color: var(--text-light);
+}
+
+/* Alerts */
+.alert {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+}
+
+/* Stat Cards */
+.stat-card {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+    color: var(--text-light);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+/* Table */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--card-dark);
+    color: var(--text-light);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.table thead {
+    background-color: #2a2a2a;
+    color: var(--text-light);
+}
+
+.table tbody tr:hover {
+    background-color: #333;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 3rem;
+    padding: 1.5rem;
+    font-weight: 500;
+    border-top: 1px solid #333;
+}
+
+/* Badges */
+.badge-custom {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Quick Actions */
+.hover-shadow {
+    transition: all 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.4);
+    transform: translateY(-4px);
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <div style="display:flex; align-items:center; gap:10px;">
+    <img src="{{ url_for('static', filename='logo.png') }}" 
+         alt="Logo" 
+         style="height:40px;">
+    <h3 style="margin:0; color:white;">Salary Predict AI</h3>
+</div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="/">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'predict' %}active{% endif %}" href="/predict">
+                        <i class="fas fa-user"></i> Single Predict
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'batch' %}active{% endif %}" href="/batch">
+                        <i class="fas fa-upload"></i> Batch Predict
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'analytics' %}active{% endif %}" href="/analytics">
+                        <i class="fas fa-chart-line"></i> Analytics
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'fairness' %}active{% endif %}" href="/fairness">
+                        <i class="fas fa-balance-scale"></i> Fairness
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container container-main">
+    {% block content %}{% endblock %}
+</div>
+
+<div class="footer">
+   <footer class="text-center text-light small mt-4">
+    <p>© 2025 Salary Predict AI | Powered by Flask & Machine Learning</p>
+    <p>Developed by <strong>Reyyi Shreyas</strong> </p>
+    <p>Designed for accurate, fair, and actionable salary predictions to help HR and recruitment teams make informed decisions.</p>
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
