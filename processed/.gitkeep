@@ -1,0 +1,2 @@
+# Processed CSV splits (X_train, X_test, y_train, y_test) are excluded from git.
+# Run cleaning_splitting/data_cleaning.py to regenerate, or download from Drive link in README.md

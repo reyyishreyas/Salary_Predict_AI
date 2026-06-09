@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────
+#  SalaryPredict AI  –  .gitignore
+# ─────────────────────────────────────────────
+
+# ── Trained model binaries (large files) ──────
+*.pkl
+*.h5
+*.pt
+*.pth
+*.joblib
+*.model
+*.bin
+
+# ── Processed / split datasets ────────────────
+processed/X_train.csv
+processed/X_test.csv
+processed/y_train.csv
+processed/y_test.csv
+# Keep the master dataset placeholder (see README for download)
+# processed/fair_salary_prediction_dataset.csv
+
+# ── Python cache ──────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# ── Virtual environments ──────────────────────
+venv/
+.venv/
+env/
+ENV/
+.env
+
+# ── Jupyter / IPython ─────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── OS artefacts ──────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── IDE / editor ──────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Logs & temp files ─────────────────────────
+*.log
+*.tmp
+*.bak
+*.orig
+
+# ── Distribution / build artefacts ───────────
+dist/
+build/
+*.egg-info/
+*.egg
+site/
+.eggs/
+
+# ── Coverage / test artefacts ─────────────────
+.coverage
+.pytest_cache/
+htmlcov/

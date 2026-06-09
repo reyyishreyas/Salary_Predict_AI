@@ -116,13 +116,23 @@ def predict():
             if col in df.columns:
                 df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
 
+        if 'International_degree_any' in df.columns:
+            df['International_degree_any'] = (
+                df['International_degree_any']
+                .astype(str)
+                .str.upper()
+                .map({'Y': 1, 'N': 0})
+                .fillna(0)
+            )
+
         # Align columns with training
         for col in train_data.columns:
             if col not in df.columns:
                 df[col] = 0
         df = df[train_data.columns]
 
-        pred = model.predict(df)[0]
+        pred = float(model.predict(df)[0])
+        pred = max(pred, 50000)
         result = {
             'predicted': f"{pred:,.2f}",
             'lower': f"{pred*0.9:,.2f}",
@@ -192,6 +202,7 @@ def batch():
         df = df[train_data.columns]
 
         predictions = model.predict(df)
+        predictions = np.maximum(predictions, 0)
         results = pd.DataFrame({
             'Applicant_ID': applicant_ids,
             'Predicted_Salary': predictions,
