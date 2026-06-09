@@ -147,12 +147,12 @@ SalaryPredict_AI/
 
 | File | Destination Path | Drive Link |
 |---|---|---|
-| Stacking Ensemble | `models/model.pkl` | 🔗 [Insert Drive Link Here] |
-| Gradient Boosting | `gradient_boosting/model.pkl` | 🔗 [Insert Drive Link Here] |
-| XGBoost | `xgboost/model.pkl` | 🔗 [Insert Drive Link Here] |
-| Random Forest | `random_forest/model.pkl` | 🔗 [Insert Drive Link Here] |
-| Linear Regression Pipeline | `linear_regression/model_pipeline.pkl` | 🔗 [Insert Drive Link Here] |
-| Dataset | `processed/fair_salary_prediction_dataset.csv` | 🔗 [Insert Drive Link Here] |
+| Stacking Ensemble | `models/model.pkl` | 🔗 [https://drive.google.com/file/d/1nvHCk3MdKQP_CKcgt9BJ0p3I_QMLe9uD/view?usp=sharing] |
+| Gradient Boosting | `gradient_boosting/model.pkl` | 🔗 [https://drive.google.com/file/d/1ITCG_9K0dio5ojkxhHS3OW2ITqF26oK_/view?usp=sharing] |
+| XGBoost | `xgboost/model.pkl` | 🔗 [https://drive.google.com/file/d/1ei4qcXX_WFiPaIQ8kXWYe3DzBhSfxkJ4/view?usp=sharing] |
+| Random Forest | `random_forest/model.pkl` | Kindly train the python program for this |
+| Linear Regression Pipeline | `linear_regression/model_pipeline.pkl` | 🔗 [https://drive.google.com/file/d/1hlrtHGJiI1NJShq55bQysx3IZ3VyLqEw/view?usp=sharing] |
+| Dataset | `processed/fair_salary_prediction_dataset.csv` | 🔗 [https://drive.google.com/file/d/1Ud-ZNeOoTtJbsMnNXLsN1PuhIxH4xH08/view?usp=sharing] |
 
 ---
 
