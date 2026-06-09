@@ -2,7 +2,7 @@
 #  SalaryPredict AI  –  .gitignore
 # ─────────────────────────────────────────────
 
-# ── Trained model binaries (large files) ──────
+# ── Trained model binaries (large, use Drive link from README) ──
 *.pkl
 *.h5
 *.pt
@@ -11,13 +11,12 @@
 *.model
 *.bin
 
-# ── Processed / split datasets ────────────────
+# ── Processed / split datasets (regenerate via data_cleaning.py) ──
 processed/X_train.csv
 processed/X_test.csv
 processed/y_train.csv
 processed/y_test.csv
-# Keep the master dataset placeholder (see README for download)
-# processed/fair_salary_prediction_dataset.csv
+processed/fair_salary_prediction_dataset.csv
 
 # ── Python cache ──────────────────────────────
 __pycache__/
